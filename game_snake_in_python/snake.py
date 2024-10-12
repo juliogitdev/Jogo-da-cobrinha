@@ -2,8 +2,9 @@ import pygame
 import sys
 import random
 import os
-
 import pygame.locals
+
+from pathlib import Path
 
 largura = 1280
 altura = 800
@@ -32,9 +33,12 @@ maca_x = random.randint(1, 19) * y_size
 maca_y = random.randint(1, 19) * y_size
 color_maca = (255, 0, 0)
 
-musica_de_fundo = pygame.mixer.Sound(os.path.join(os.getcwd() , 'Jogo-da-cobrinha', 'sounds', 'music_background.mp3'))
-update_musica = pygame.mixer.Sound(os.path.join(os.getcwd() , 'Jogo-da-cobrinha', 'sounds', 'update.wav'))
-gameover_musica = pygame.mixer.Sound(os.path.join(os.getcwd() , 'Jogo-da-cobrinha', 'sounds', 'gameover.wav'))
+diretorio_atual = Path(__file__).resolve().parent
+print(diretorio_atual)
+# Caminho completo para os arquivos de som
+musica_de_fundo = pygame.mixer.Sound(diretorio_atual / 'sounds' / 'music_background.mp3')
+update_musica = pygame.mixer.Sound(diretorio_atual / 'sounds' / 'update.wav')
+gameover_musica = pygame.mixer.Sound(diretorio_atual / 'sounds' / 'gameover.wav')
 
 #TOCAR MUSICA DE FUNDO
 def tocar_musica_de_fundo(tocar):
