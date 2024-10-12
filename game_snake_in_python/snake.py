@@ -17,8 +17,20 @@ pygame.mixer.init()
 pygame.init()
 
 
+y_size = 5 /100 * altura
+x_size = y_size
+velocidade = x_size
 
+x_controler = 0
+y_controler = 0
 
+snake_x = largura/2 - x_size
+snake_y = altura/2 - x_size
+color_snake = (0, 255, 0)
+
+maca_x = random.randint(1, 19) * y_size
+maca_y = random.randint(1, 19) * y_size
+color_maca = (255, 0, 0)
 
 musica_de_fundo = pygame.mixer.Sound(os.path.join(os.getcwd() , 'Jogo-da-cobrinha', 'sounds', 'music_background.mp3'))
 update_musica = pygame.mixer.Sound(os.path.join(os.getcwd() , 'Jogo-da-cobrinha', 'sounds', 'update.wav'))
@@ -36,12 +48,6 @@ def sound_efects(efeito):
     efeito_sonoro = pygame.mixer.Sound(efeito)
     efeito_sonoro.play()
 
-y_size = 5 /100 * altura
-x_size = y_size
-velocidade = x_size
-
-x_controler = 0
-y_controler = 0
 
 def aumentar_cobra(corpo_cobra):
     # Apenas desenhar a cobra se tiver mais segmentos que o permitido por max_len_cobra
@@ -54,14 +60,6 @@ def aumentar_cobra(corpo_cobra):
         # Desenhar o preenchimento verde da cobra, um pouco menor para caber dentro da borda
         pygame.draw.rect(tela, color_snake, (XeY[0] + 1, XeY[1] + 1, x_size - 2, y_size - 2))
 
-
-snake_x = 40
-snake_y = 40
-color_snake = (0, 255, 0)
-
-maca_x = largura/2 - x_size
-maca_y = altura/2 - y_size
-color_maca = (255, 0, 0)
 
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption("Snake Game")
